@@ -1,0 +1,122 @@
+<meta charset="utf-8" lang="en">  <!-- this line allows UTF-8 characters in the .html file -->
+
+**Raytracer**
+
+
+
+
+Author
+=============
+
+
+<div class="noheader firstcol">
+                  |             
+------------------|-------------
+name              | Tim Swanson
+computer + OS     | Macbook Pro 2014
+partners          | Ryan Costello, Jeremy Garey
+additional help   | Dr. Denning
+</div>
+
+
+
+
+
+Project Features
+---------------------
+- Implemented raytracing engine from a starter dart template.
+- Handled a variety of primitive object types and lighting factors, including shadows, reflection, and refraction.
+- Implemented an MPEG encoder to generate video files
+
+
+
+
+Reference Images
+---------------------
+
+
+![A simple sphere](images/P02_01_sphere_ka.png width="200px")
+
+![A ball on a plane](images/P02_05_ball_on_plane.png width="200px")
+
+![A ball on a reflective plane](images/P02_07_reflection.png width="200px")
+
+![Snowman with big nose](images/P02_12_big_nose.png width="200px")
+
+
+
+
+MPEG Video Encoder
+===================
+
+I translated an MPEG encoder from C to Dart. Additionally, I added the ability to read images in from a specified directory rather than just from function calls. This process consisted of initial translation, including deriving meaning from certain lines that did not translate nicely into dart, and then hours of debugging the many issues that came from translation and the different behaviours of the languages.
+
+After a last minute bug fix I was finally able to render out a video viewable in VLC. The encoder takes in the image location, video location, frame count, and frame rate. Unfortunately I had to remove my asynchrnous code that could take all readable images of any name, but it was not ordering properly.
+
+I also set up FFMPEG on my computer and rendered our project on that before our encoder was working.
+
+The Result 
+---------------------
+
+
+![A snowman with texture mapping and procedurally generated snowflakes](Demo.gif width="400px")
+
+![Encoded video shows in VLC](VLC.png width="400px")
+
+
+
+
+Known bugs / limitations
+-------------------------
+Configuration of encoder is hard coded, limiting usefulness to specific situations. Additionally the output is only VLC friendly, not universally viewable.
+
+
+Execute
+---------------------
+To run, install dart and run `dart run`
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> <!-- a sans-serif font -->
+<style>  /* A TAYLOR-INSPIRED THEME */
+    body {font-family:'Open Sans',sans-serif;}
+    .md a:link, .md a:visited {color:hsl(252,23.0%,44.3%); font-family:'Open Sans',sans-serif;}
+    .md table.table th {background-color:hsl(252,23.0%,44.3%);}
+    .md .noheader th {display:none;}
+    .md .firstcol td:first-child {white-space:pre;color:white;vertical-align:top;font-weight:bold;border-color:black;background:hsl(252,23.0%,54.3%);}
+    .md .firstcol tr:nth-child(even) td:first-child {background:hsl(252,23.0%,44.3%);}
+</style>
+
+
+<!-- The script and style below are added for clarity and to workaround a bug -->
+<script>
+    // this is a hack to workaround a bug in Markdeep+Mathjax, where
+    // `&#36;`` is automatically converted to `\(`` and `\)`` too soon.
+    // the following code will replace the innerHTML of all elements
+    // with class "dollar" with a dollar sign.
+    setTimeout(function() {
+        var dollars = document.getElementsByClassName('dollar');
+        for(var i = 0; i < dollars.length; i++) {
+            dollars[i].innerHTML = '&#' + '36;'; // split to prevent conversion to $
+        }
+    }, 1000);
+</script>
+<style>
+    /* adding some styling to <code> tags (but not <pre><code> coding blocks!) */
+    :not(pre) > code {
+        background-color: rgba(0,0,0,0.05);
+        outline: 1px solid rgba(0,0,0,0.15);
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+    }
+    /* fixes table of contents of medium-length document from looking weird if admonitions are behind */
+    .md div.mediumTOC { background: white; }
+    .md div.admonition { position: initial !important; }
+</style>
+
+<!--   Leave the following Markdeep formatting code, as this will format your text above to look nice in a wed browser   -->
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible");</script>
